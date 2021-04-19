@@ -14,16 +14,13 @@ def run(subscales, var_split_list):
         df = pd.read_csv('onehot/' + sub_name + '.csv')
         X = df.drop(['RiskPerformance'], axis = 1)
         y = df['RiskPerformance']
-        # print(X, y)
         train_X, test_X, train_y, test_y = train_test_split(X, y, test_size=0.3, random_state=666)
 
         lr = LogisticRegression()
         lr.fit(train_X, train_y)
 
-
         ### 接续： 将这个的输出拼接成一个 xxx * 10 的panda.dataframe 2021/4/19 22:50
         lr.predict_proba(train_X)
-
 
         sub_train_data[sub_name] = [train_X, train_y]
         sub_test_data[sub_name] = [test_X, test_y]

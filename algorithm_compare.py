@@ -180,7 +180,7 @@ if __name__ == "__main__":
     RUN_TWOLAYER = False                # 本次测试是否运行Twolayer
     RUN_LOGISTICREG = False             # 本次测试是否运行逻辑回归
     RUN_1LAYER_RS_2LAYER_LR = False     # 本次测试是否运行 第一层RISKSLIM 第二层LR的模型
-    RUN_1LAYER_LR_2LAYER_RS = False      # 本次测试是否运行 第一层LR 第二层RISKSLIM的模型
+    RUN_1LAYER_LR_2LAYER_RS = True      # 本次测试是否运行 第一层LR 第二层RISKSLIM的模型
 
 
     # 找出每个变量所在文件中区间的起始下标，顺便记录分了箱的那些变量数组
