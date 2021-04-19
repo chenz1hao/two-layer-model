@@ -163,7 +163,7 @@ if __name__ == "__main__":
     split_file = pd.read_csv('data/features_detail.csv') # 这个文件的split_list就是分箱的结果
     original_data = pd.read_csv('data/heloc_dataset_v2.csv') # v2在heloc_dataset_v1.csv的基础上将预测目标列名改为了target，且Bad->-1，Good->1
     original_data_onehot = pd.read_csv('onehot/ALL_IN_ONE.csv')
-
+    # 测试修改
 
     var_start_with = {}                 # 每个变量所在区间的起始下标
     var_all = []                        # 所有变量 = var_to_be_bin + var_not_to_be_bin
