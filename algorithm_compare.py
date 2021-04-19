@@ -288,9 +288,11 @@ if __name__ == "__main__":
         print('---不运行第一层RiskSLIM第二层LR的模型')
 
     if RUN_1LAYER_LR_2LAYER_RS:
-        pass
+        # test_y_lr_riskslim, pred_y_lr_riskslim, pred_y_prob_lr_riskslim =
+        LR_1_RiskSLIM_2.run(subscales, var_split_list)
+        # printPerformance('1-layer LR | 2-layer RiskSLIM', test_y_lr_riskslim, pred_y_lr_riskslim, pred_y_prob_lr_riskslim)
     else:
-        print('---不运行第一层LR第二层RiskSLIM的模型')##
+        print('---不运行第一层LR第二层RiskSLIM的模型')
 
     ### 算法运行 END
 
