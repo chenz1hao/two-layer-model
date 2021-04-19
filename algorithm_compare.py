@@ -290,7 +290,7 @@ if __name__ == "__main__":
     if RUN_1LAYER_LR_2LAYER_RS:
         pass
     else:
-        print('---不运行第一层LR第二层RiskSLIM的模型')
+        print('---不运行第一层LR第二层RiskSLIM的模型')##
 
     ### 算法运行 END
 
