@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: riskslim
+Version: 0.0.0
+Summary: optimized risk scores on large-scale datasets
+Home-page: https://github.com/ustunb/risk-slim
+Author: Berk Ustun
+Author-email: berk@seas.harvard.edu
+License: new BSD
+Download-URL: https://github.com/ustunb/risk-slim
+Description: UNKNOWN
+Platform: UNKNOWN

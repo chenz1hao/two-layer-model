@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: cplex
+Version: 20.1.0.0
+Summary: A Python interface to the CPLEX Callable Library.
+Home-page: https://www.ibm.com/products/ilog-cplex-optimization-studio
+Author: IBM
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN

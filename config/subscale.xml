@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+    <subscale name="ExternalRiskEstimate">
+        <var>ExternalRiskEstimate</var>
+    </subscale>
+
+    <subscale name="TradeOpenTime">
+        <var>MSinceOldestTradeOpen</var>
+        <var>MSinceMostRecentTradeOpen</var>
+        <var>AverageMInFile</var>
+    </subscale>
+
+    <subscale name="NumSatisfactoryTrades">
+        <var>NumSatisfactoryTrades</var>
+    </subscale>
+
+    <subscale name="TradeFrequency">
+        <var>NumTrades60Ever2DerogPubRec</var>
+        <var>NumTrades90Ever2DerogPubRec</var>
+        <var>NumTotalTrades</var>
+        <var>NumTradesOpeninLast12M</var>
+    </subscale>
+
+    <subscale name="Delinquency">
+        <var>PercentTradesNeverDelq</var>
+        <var>MSinceMostRecentDelq</var>
+        <var>MaxDelq2PublicRecLast12M</var>
+        <var>MaxDelqEver</var>
+    </subscale>
+
+    <subscale name="Installment">
+        <var>PercentInstallTrades</var>
+        <var>NetFractionInstallBurden</var>
+        <var>NumInstallTradesWBalance</var>
+    </subscale>
+
+    <subscale name="Inquiry">
+        <var>MSinceMostRecentInqexcl7days</var>
+        <var>NumInqLast6M</var>
+        <var>NumInqLast6Mexcl7days</var>
+    </subscale>
+
+    <subscale name="RevolvingBalance">
+        <var>NetFractionRevolvingBurden</var>
+        <var>NumRevolvingTradesWBalance</var>
+    </subscale>
+
+    <subscale name="Utilization">
+        <var>NumBank2NatlTradesWHighUtilization</var>
+    </subscale>
+
+    <subscale name="TradeWBalance">
+        <var>PercentTradesWBalance</var>
+    </subscale>
+</root>
