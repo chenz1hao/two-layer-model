@@ -1,16 +1,19 @@
+# 系统&第三方模块导入
 import pandas as pd
+import numpy as np
 from xml.dom.minidom import parse
 import pprint
-import riskslim_in_use
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-import numpy as np
-import original_two_layer_model
-import two_layer_riskslim
 from sklearn.metrics import roc_curve, roc_auc_score
 import matplotlib.pyplot as plt
 import time
 
+### 自定义模块导入
+import riskslim_in_use
+import original_two_layer_model
+import RiskSLIM_1_LR_1
+import LR_1_RiskSLIM_2
 
 
 ############################################
@@ -163,7 +166,7 @@ if __name__ == "__main__":
     split_file = pd.read_csv('data/features_detail.csv') # 这个文件的split_list就是分箱的结果
     original_data = pd.read_csv('data/heloc_dataset_v2.csv') # v2在heloc_dataset_v1.csv的基础上将预测目标列名改为了target，且Bad->-1，Good->1
     original_data_onehot = pd.read_csv('onehot/ALL_IN_ONE.csv')
-    # 测试修改
+
 
     var_start_with = {}                 # 每个变量所在区间的起始下标
     var_all = []                        # 所有变量 = var_to_be_bin + var_not_to_be_bin
@@ -176,7 +179,8 @@ if __name__ == "__main__":
     RUN_RISKSLIM = False                # 本次测试是否运行RiskSlim
     RUN_TWOLAYER = False                # 本次测试是否运行Twolayer
     RUN_LOGISTICREG = False             # 本次测试是否运行逻辑回归
-    RUN_RISKSLIM_WITH_TWOLAYER = False  # 本次测试是否运行双层RISKSLIM模型
+    RUN_1LAYER_RS_2LAYER_LR = False     # 本次测试是否运行 第一层RISKSLIM 第二层LR的模型
+    RUN_1LAYER_LR_2LAYER_RS = False      # 本次测试是否运行 第一层LR 第二层RISKSLIM的模型
 
 
     # 找出每个变量所在文件中区间的起始下标，顺便记录分了箱的那些变量数组
@@ -245,7 +249,7 @@ if __name__ == "__main__":
             temp_csv.to_csv('onehot/' + key + '.csv', index=0)
         print('====================================所有subscale的one-hot编码文件生成成功===============================')
     else:
-        print('---直接使用了onehot文件夹中的数据来运行算法')
+        print('---直接使用了onehot文件夹中以前已生成过的数据来运行算法')
 
 
     ### 算法运行 BEGIN
@@ -277,11 +281,16 @@ if __name__ == "__main__":
         print('---不运行双层模型')
 
 
-    if RUN_RISKSLIM_WITH_TWOLAYER:
-        test_y_twolayer_riskslim, pred_y_twolayer_riskslim, pred_y_prob_twolayer_riskslim = two_layer_riskslim.run(subscales, var_split_list)
-        printPerformance('RiskSlim & Two-layer', test_y_twolayer_riskslim, pred_y_twolayer_riskslim, pred_y_prob_twolayer_riskslim)
+    if RUN_1LAYER_RS_2LAYER_LR:
+        test_y_riskslim_lr, pred_y_riskslim_lr, pred_y_prob_riskslim_lr = RiskSLIM_1_LR_1.run(subscales, var_split_list)
+        printPerformance('1-layer RiskSLIM | 2-layer LR', test_y_riskslim_lr, pred_y_riskslim_lr, pred_y_prob_riskslim_lr)
     else:
-        print('---不运行riskslim&twolayer')
+        print('---不运行第一层RiskSLIM第二层LR的模型')
+
+    if RUN_1LAYER_LR_2LAYER_RS:
+        pass
+    else:
+        print('---不运行第一层LR第二层RiskSLIM的模型')
 
     ### 算法运行 END
 

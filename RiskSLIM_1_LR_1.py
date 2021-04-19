@@ -4,6 +4,7 @@ import riskslim_in_use
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
+# 第一层RiskSLIM 第二层逻辑回归
 
 def sigmoid(X):
     return 1.0 / (1.0 + np.exp(-X))
