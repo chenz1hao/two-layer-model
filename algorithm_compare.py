@@ -12,7 +12,7 @@ import time
 ### 自定义模块导入
 import riskslim_in_use
 import original_two_layer_model
-import RiskSLIM_1_LR_1
+import RiskSLIM_1_LR_2
 import LR_1_RiskSLIM_2
 
 
@@ -176,10 +176,10 @@ if __name__ == "__main__":
     subscales = {}                      # 从配置文件中读取的subscale分组情况，以分组名为key，组中成员变量名为values
     subscales_name = []                 # subscale分组名的记录数组
     NEED_GENERATE_ONE_HOT_CSV = False   # 是否生成one-hot文件，只需要生成一次，不用每次运行反复生成，设置为False前需要确认是否真的存在了对应subscale个csv
-    RUN_RISKSLIM = False                # 本次测试是否运行RiskSlim
-    RUN_TWOLAYER = False                # 本次测试是否运行Twolayer
-    RUN_LOGISTICREG = False             # 本次测试是否运行逻辑回归
-    RUN_1LAYER_RS_2LAYER_LR = False     # 本次测试是否运行 第一层RISKSLIM 第二层LR的模型
+    RUN_RISKSLIM = True                # 本次测试是否运行RiskSlim
+    RUN_TWOLAYER = True                # 本次测试是否运行Twolayer
+    RUN_LOGISTICREG = True             # 本次测试是否运行逻辑回归
+    RUN_1LAYER_RS_2LAYER_LR = True     # 本次测试是否运行 第一层RISKSLIM 第二层LR的模型
     RUN_1LAYER_LR_2LAYER_RS = True      # 本次测试是否运行 第一层LR 第二层RISKSLIM的模型
 
 
@@ -282,15 +282,15 @@ if __name__ == "__main__":
 
 
     if RUN_1LAYER_RS_2LAYER_LR:
-        test_y_riskslim_lr, pred_y_riskslim_lr, pred_y_prob_riskslim_lr = RiskSLIM_1_LR_1.run(subscales, var_split_list)
+        test_y_riskslim_lr, pred_y_riskslim_lr, pred_y_prob_riskslim_lr = RiskSLIM_1_LR_2.run(subscales, var_split_list)
         printPerformance('1-layer RiskSLIM | 2-layer LR', test_y_riskslim_lr, pred_y_riskslim_lr, pred_y_prob_riskslim_lr)
     else:
         print('---不运行第一层RiskSLIM第二层LR的模型')
 
     if RUN_1LAYER_LR_2LAYER_RS:
-        # test_y_lr_riskslim, pred_y_lr_riskslim, pred_y_prob_lr_riskslim =
-        LR_1_RiskSLIM_2.run(subscales, var_split_list)
-        # printPerformance('1-layer LR | 2-layer RiskSLIM', test_y_lr_riskslim, pred_y_lr_riskslim, pred_y_prob_lr_riskslim)
+        test_y_lr_riskslim, pred_y_lr_riskslim, pred_y_prob_lr_riskslim = LR_1_RiskSLIM_2.run(subscales, var_split_list)
+        # LR_1_RiskSLIM_2.run(subscales, var_split_list)
+        printPerformance('1-layer LR | 2-layer RiskSLIM', test_y_lr_riskslim, pred_y_lr_riskslim, pred_y_prob_lr_riskslim)
     else:
         print('---不运行第一层LR第二层RiskSLIM的模型')
 
